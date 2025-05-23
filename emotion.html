@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Emotional Bubbles</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    @keyframes moveParticle {
+      0%   { transform: translate(0, 0) scale(1); opacity: 0.6; }
+      50%  { transform: translate(25px, -25px) scale(1.1); opacity: 0.8; }
+      100% { transform: translate(-25px, 25px) scale(1); opacity: 0.6; }
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1641895964758-3e4374714a8c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D') no-repeat center/cover;
+      color: white;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .logo {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      font-weight: 400;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #000;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      transition: background 0.4s ease;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      font-size: 2.5rem;
+      margin-top: 30px;
+      background: linear-gradient(90deg, #00fff0, #7b2ff7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .box {
+      width: 90vw;
+      max-width: 900px;
+      height: 500px;
+      border: 3px solid rgba(0, 255, 255, 0.7);
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), 0 0 60px rgba(0, 255, 255, 0.2);
+      background-color: rgba(255, 255, 255, 0.01);
+      overflow: hidden;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .center-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: calc(100vh - 80px);
+      text-align: center;
+    }
+
+    #quizButton {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(123, 47, 247, 0.1);
+      border: 2px solid #7b2ff780;
+      color: #fff;
+      font-size: 1.2rem;
+      padding: 12px 30px;
+      border-radius: 30px;
+      backdrop-filter: blur(10px);
+      text-decoration: none;
+      font-family: 'Great Vibes', cursive;
+      text-shadow: 0 0 10px #a18eff;
+      box-shadow: 0 0 15px #a18eff60;
+      transition: all 0.4s ease;
+      z-index: 10;
+    }
+
+    #quizButton:hover {
+      background: rgba(123, 47, 247, 0.2);
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #a18eff;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background: white;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .login-nav-btn {
+      border: 2px solid white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .login-nav-btn:hover {
+      background: white;
+      color: black;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Spiritual Consciousness</div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="About.html">About</a>
+      <a href="emotion.html">Emotions</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="login.html"><button class="login-nav-btn">Login</button></a>
+  </nav>
+
+  <div class="center-container">
+    <h1 id="emotions">Hello User! <br> Choose Your Emotion</h1>
+    <div class="box">
+      <canvas id="canvas"></canvas>
+    </div>
+  </div>
+
+  <script>
+    const emotions = [
+      { icon: "😠", label: "Anger" },
+      { icon: "😬", label: "Anxiety" },
+      { icon: "😕", label: "Confusion" },
+      { icon: "🙏", label: "Gratitude" },
+      { icon: "🌟", label: "Hope" },
+      { icon: "🤩", label: "Excitement" },
+      { icon: "😨", label: "Fear" },
+      { icon: "😔", label: "Shame" },
+      { icon: "😞", label: "Loneliness" },
+      { icon: "❤️", label: "Love" },
+      { icon: "😢", label: "Sadness" },
+      { icon: "☮️", label: "Peace" },
+      { icon: "😌", label: "Calm" },
+      { icon: "😊", label: "Joy" }
+    ];
+
+    const emotionLinks = {
+      "Anger": "anger.html",
+      "Anxiety": "anxious.html",
+      "Confusion": "confusion.html",
+      "Gratitude": "gratitude.html",
+      "Hope": "hope.html",
+      "Excitement": "excitement.html",
+      "Fear": "fear.html",
+      "Shame": "shame.html",
+      "Loneliness": "loneliness.html",
+      "Love": "love.html",
+      "Sadness": "sad.html",
+      "Peace": "peace.html",
+      "Calm": "calm.html",
+      "Joy": "joy.html"
+    };
+
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    let balls = [];
+
+    function resizeCanvas() {
+      canvas.width = canvas.clientWidth;
+      canvas.height = canvas.clientHeight;
+    }
+
+    window.onresize = resizeCanvas;
+    resizeCanvas();
+
+    class Ball {
+      constructor(x, y, vx, vy, emoji, label) {
+        this.x = x;
+        this.y = y;
+        this.vx = vx;
+        this.vy = vy;
+        this.radius = 50;
+        this.emoji = emoji;
+        this.label = label;
+      }
+
+      draw(ctx) {
+        const gradient = ctx.createRadialGradient(this.x, this.y, 10, this.x, this.y, this.radius);
+        gradient.addColorStop(0, "rgba(0,255,255, 0.5)");
+        gradient.addColorStop(1, "rgba(173,216,230, 0)");
+
+        ctx.beginPath();
+        ctx.fillStyle = gradient;
+        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+        ctx.fill();
+
+        ctx.font = "36px serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillStyle = "#fff";
+        ctx.fillText(this.emoji, this.x, this.y - 4);
+
+        ctx.font = "14px sans-serif";
+        ctx.fillStyle = "#88f";
+        ctx.fillText(this.label, this.x, this.y + 34);
+      }
+
+      update(canvasWidth, canvasHeight) {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x - this.radius <= 0 || this.x + this.radius >= canvasWidth) this.vx *= -1;
+        if (this.y - this.radius <= 0 || this.y + this.radius >= canvasHeight) this.vy *= -1;
+
+        for (let other of balls) {
+          if (other !== this) {
+            const dx = other.x - this.x;
+            const dy = other.y - this.y;
+            const distance = Math.hypot(dx, dy);
+            if (distance < this.radius * 2) {
+              const angle = Math.atan2(dy, dx);
+              const push = 0.1;
+              this.vx -= Math.cos(angle) * push;
+              this.vy -= Math.sin(angle) * push;
+              other.vx += Math.cos(angle) * push;
+              other.vy += Math.sin(angle) * push;
+            }
+          }
+        }
+
+        const maxSpeed = 0.8;
+        const speed = Math.hypot(this.vx, this.vy);
+        if (speed > maxSpeed) {
+          this.vx = (this.vx / speed) * maxSpeed;
+          this.vy = (this.vy / speed) * maxSpeed;
+        }
+      }
+
+      isClicked(x, y) {
+        const dx = this.x - x;
+        const dy = this.y - y;
+        return dx * dx + dy * dy <= this.radius * this.radius;
+      }
+    }
+
+    function init() {
+      balls = [];
+      for (let i = 0; i < emotions.length; i++) {
+        const x = Math.random() * (canvas.width - 100) + 50;
+        const y = Math.random() * (canvas.height - 100) + 50;
+        const vx = (Math.random() - 0.5) * 0.2;
+        const vy = (Math.random() - 0.5) * 0.2;
+        balls.push(new Ball(x, y, vx, vy, emotions[i].icon, emotions[i].label));
+      }
+    }
+
+    canvas.onclick = function (e) {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      for (let ball of balls) {
+        if (ball.isClicked(x, y)) {
+          const file = emotionLinks[ball.label];
+          if (file) {
+            window.location.href = file;
+          } else {
+            alert("This emotion doesn't have a linked page yet.");
+          }
+          break;
+        }
+      }
+    };
+
+    init();
+    animate();
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let ball of balls) {
+        ball.update(canvas.width, canvas.height);
+        ball.draw(ctx);
+      }
+      requestAnimationFrame(animate);
+    }
+  </script>
+
+  <a href="quiz.html" id="quizButton">Take the Quiz</a>
+
+</body>
+</html>

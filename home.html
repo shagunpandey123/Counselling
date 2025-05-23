@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SPIRITUAL CONSCIOUSNESS BEYOND SCIENCE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.logo {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Playfair Display', serif;
+      overflow: hidden;
+    }
+
+    .background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      color: #ffffff;
+    }
+
+    .title h1 {
+      font-size: 3.5rem;
+      text-shadow:
+        0 0 15px #e0aaff,
+        0 0 25px #c77dff,
+        0 0 35px #9d4edd,
+        0 0 45px #7b2cbf;
+      animation: floatMore 6s ease-in-out infinite,
+                 glowPulse 4s ease-in-out infinite,
+                 zoomInOut 8s ease-in-out infinite;
+    }
+
+    .description {
+      margin-top: 30px;
+      max-width: 800px;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      text-shadow: 0 0 10px #000000;
+      animation: fadeIn 5s ease forwards;
+    }
+
+
+    .login-button {
+      margin-top: 40px;
+      padding: 12px 30px;
+      font-size: 1.2rem;
+      color: white;
+      background: rgba(155, 89, 182, 0.7);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+      text-decoration: none;
+    }
+
+    .begin-button {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 12px 30px;
+  font-size: 1.2rem;
+  color: #ffffff;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  transition: all 0.4s ease;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.begin-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+
+    @keyframes floatMore {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-40px);
+      }
+    }
+
+    @keyframes glowPulse {
+      0%, 100% {
+        text-shadow:
+          0 0 10px #f0caff,
+          0 0 20px #d57dff,
+          0 0 30px #a64cff;
+      }
+      50% {
+        text-shadow:
+          0 0 25px #ffffff,
+          0 0 35px #f2a8ff,
+          0 0 45px #e57dff;
+      }
+    }
+
+    @keyframes zoomInOut {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 600px) {
+      .title h1 {
+        font-size: 2rem;
+      }
+      .description {
+        font-size: 1rem;
+      }
+      .begin-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
+    }
+
+    nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+}
+.logo {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  color: white;
+}
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 1rem;
+  position: relative;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: white;
+  transition: 0.3s;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+.login-nav-btn {
+  border: 2px solid white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.login-nav-btn:hover {
+  background: white;
+  color: black;
+}
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+}
+    
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">Spiritual Consciousness</div>
+    <div class="nav-links">
+      <a href="file:///C:/Users/50002/Downloads/uidproj/home.html">Home</a>
+      <a href="file:///C:/Users/50002/Downloads/uidproj/About.html">About</a>
+      <a href="file:///C:/Users/50002/Downloads/uidproj/emotion.html">Emotions</a>
+      <a href="C:\Users\50002\Downloads\uidproj\contact.html">Contact</a>
+    </div>
+    <a href="file:///C:/Users/50002/Downloads/uidproj/login.html"><button class="login-nav-btn">Login</button></a>
+  </nav>
+
+  <video autoplay muted loop class="background-video">
+    <source src="moosic/video.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="overlay">
+    <div class="title">
+      <h1>SPIRITUAL CONSCIOUSNESS</h1>
+      <h1>BEYOND SCIENCE</h1>
+    </div>
+
+    <div class="description">
+      Welcome to a journey where emotions meet the infinite cosmos.<br />
+      Explore the profound union of science and spirituality, unlocking wisdom beyond the bounds of Earth.<br />
+      Discover your true self, connect with the supreme and transcend the limits of the known.
+    </div>
+
+    <a href="login.html" class="begin-button">Begin Your Journey</a>
+</div>
+
+</body>
+</html>

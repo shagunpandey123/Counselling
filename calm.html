@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calm Mind - Inner Stillness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    #portal {
+      position: absolute;
+      z-index: 5;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.05), rgba(0,0,30,0.95));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeInPortal 2s ease-out forwards;
+    }
+
+    #enterButton {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid #ffffff80;
+      color: #fff;
+      font-size: 2rem;
+      padding: 15px 40px;
+      border-radius: 30px;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      transition: all 0.5s ease;
+      font-family: 'Great Vibes', cursive;
+      text-shadow: 0 0 10px #fff;
+    }
+
+    #enterButton:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeInPortal {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #fff;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
+      background-size: cover;
+      opacity: 0.3;
+      filter: brightness(0.85) blur(1px) saturate(1.1);
+      animation: moveBackground 60s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes moveBackground {
+      0% { background-position: center center; }
+      50% { background-position: center top; }
+      100% { background-position: center center; }
+    }
+    
+    .portal-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .quote {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #ffffffcc;
+      font-family: 'Poppins', sans-serif;
+      max-width: 80%;
+    }
+
+
+    .book {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1500px;
+    }
+
+    .page {
+      width: 45%;
+      height: 80%;
+      background: rgba(255, 255, 255, 0.08);
+      margin: 0 10px;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px #ffffff40, inset 0 0 10px #ffffff20;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px #99ccff;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      text-shadow: 0 0 12px #a0e7e5;
+    }
+
+    p {
+      font-size: 1.3rem;
+      line-height: 1.7;
+      color: #f0f0f0;
+      text-shadow: 0 0 8px #444;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #aaa;
+      z-index: 2;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: floatParticle linear infinite;
+    }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-100vh); }
+    }
+  </style>
+</head>
+<body>
+  <div id="portal">
+    <div class="portal-content">
+      <button id="enterButton">Touch the Stillness</button>
+      <div class="quote">“In the midst of movement and chaos, keep stillness inside of you.” — Deepak Chopra</div>
+    </div>
+  </div>
+
+
+  <div class="book">
+    <div class="page">
+      <h1>Calm Within</h1>
+      <h2>What is Calm?</h2>
+      <p>Calm is not an escape — it is a return. A return to the self, to breath, to the unchanging witness behind every experience.<br>Calm is the silent canvas upon which life paints its colors. It holds joy and sorrow equally, without clinging to either.</p>
+      <h2>Spiritual Calm</h2>
+      <p>Spiritual calm arises from detachment and inner silence. A state where the mind flows like a quiet river, not stirred by passing winds of emotion. In scriptures and mystic traditions, calm is the mark of the realized being — not because nothing disturbs them, but because they are anchored beyond disturbance.</p>
+    </div>
+
+    <div class="page">
+      <h2>Scientific View</h2>
+      <p><strong>Neuroscience:</strong> Calmness slows the heartbeat, reduces cortisol, and improves clarity. Meditation and breathwork activate the parasympathetic system.</p>
+      <h2>The Power of Calm</h2>
+      <p>Calm doesn't remove challenges — it gives us the clarity to face them wisely.<br>Anger speaks loudly. Fear rushes. But calm whispers truths we would never hear in chaos.<br>In calm, we reclaim the power to choose — not just to react, but to respond with intention.</p>
+    </div>
+  </div>
+
+    <script>
+    var portal = document.getElementById('portal');
+    var enterButton = document.getElementById('enterButton');
+    var book = document.querySelector('.book');
+
+    book.style.display = 'none';
+
+    enterButton.onclick = function() {
+      portal.style.opacity = '0';
+      setTimeout(function() {
+        portal.style.display = 'none';
+        book.style.display = 'flex';
+      }, 1000);
+    };
+
+    for (var i = 0; i < 100; i++) {
+      var particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.top = Math.random() * window.innerHeight + 'px';
+      particle.style.left = Math.random() * window.innerWidth + 'px';
+      particle.style.animationDuration = (10 + Math.random() * 20) + 's';
+      document.body.appendChild(particle);
+    }
+  </script>
+
+  <footer>
+    © 2025 Calm Mind & Inner Stillness
+  </footer>
+</body>
+</html>

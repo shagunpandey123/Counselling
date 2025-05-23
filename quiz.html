@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mood Quiz</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at center, #120136, #035aa6, #03001c);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    #quiz-container {
+      background: rgba(20, 20, 40, 0.85);
+      border-radius: 30px;
+      padding: 40px 50px;
+      max-width: 600px;
+      width: 90vw;
+      box-shadow:
+        0 0 15px 3px #7b2ff7,
+        0 0 30px 5px #00d2ff,
+        inset 0 0 60px #7b2ff7;
+      text-align: center;
+      position: relative;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 0.8s forwards;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #question {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #7b2ff7, #00d2ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 30px;
+      user-select: none;
+    }
+
+    ul#options {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 40px 0;
+      user-select: none;
+    }
+
+    ul#options li {
+      margin: 15px 0;
+    }
+
+    ul#options li label {
+      cursor: pointer;
+      font-size: 1.15rem;
+      display: block;
+      padding: 15px 25px;
+      border-radius: 35px;
+      border: 2px solid #7b2ff7;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.05);
+      user-select: none;
+    }
+
+    ul#options li input[type="radio"] {
+      display: none;
+    }
+
+    ul#options li input[type="radio"]:checked + label {
+      background: #7b2ff7;
+      border-color: #00d2ff;
+      box-shadow:
+        0 0 10px 2px #00d2ff,
+        0 0 15px 4px #7b2ff7;
+      color: #fff;
+    }
+
+    button#nextBtn {
+      background: linear-gradient(90deg, #00d2ff, #7b2ff7);
+      border: none;
+      padding: 15px 50px;
+      border-radius: 35px;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+      user-select: none;
+      box-shadow: 0 0 10px #7b2ff7;
+    }
+
+    button#nextBtn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    button#nextBtn:hover:not(:disabled) {
+      box-shadow:
+        0 0 20px 6px #7b2ff7,
+        0 0 30px 10px #00d2ff;
+    }
+
+    .result {
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: #00d2ff;
+      text-shadow:
+        0 0 5px #00d2ff,
+        0 0 15px #7b2ff7,
+        0 0 30px #00d2ff;
+      user-select: none;
+      animation: glowText 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glowText {
+      from {
+        text-shadow:
+          0 0 10px #00d2ff,
+          0 0 20px #7b2ff7,
+          0 0 40px #00d2ff;
+      }
+      to {
+        text-shadow:
+          0 0 20px #00d2ff,
+          0 0 40px #7b2ff7,
+          0 0 60px #00d2ff;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="quiz-container">
+    <div id="question"></div>
+    <ul id="options"></ul>
+    <button id="nextBtn" disabled>Next</button>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "How do you feel when you wake up in the morning?",
+        options: [
+          { text: "Energetic and happy", mood: "Positive" },
+          { text: "Neutral, ready for the day", mood: "Neutral" },
+          { text: "Tired and anxious", mood: "Negative" }
+        ]
+      },
+      {
+        question: "How do you react to stressful situations?",
+        options: [
+          { text: "Stay calm and optimistic", mood: "Positive" },
+          { text: "Feel unsure but manage", mood: "Neutral" },
+          { text: "Get overwhelmed and worried", mood: "Negative" }
+        ]
+      },
+      {
+        question: "What best describes your social mood lately?",
+        options: [
+          { text: "Enjoying time with friends", mood: "Positive" },
+          { text: "Neutral, spending time alone", mood: "Neutral" },
+          { text: "Feeling lonely or isolated", mood: "Negative" }
+        ]
+      },
+      {
+        question: "How motivated do you feel for your daily tasks?",
+        options: [
+          { text: "Very motivated and excited", mood: "Positive" },
+          { text: "Somewhat motivated", mood: "Neutral" },
+          { text: "Not motivated and tired", mood: "Negative" }
+        ]
+      },
+      {
+        question: "How do you feel about the future?",
+        options: [
+          { text: "Hopeful and confident", mood: "Positive" },
+          { text: "Uncertain but calm", mood: "Neutral" },
+          { text: "Worried or scared", mood: "Negative" }
+        ]
+      }
+    ];
+
+    let currentQuestion = 0;
+    const moodScores = { Positive: 0, Neutral: 0, Negative: 0 };
+
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const nextBtn = document.getElementById("nextBtn");
+
+    function loadQuestion() {
+      nextBtn.disabled = true;
+      const q = quizData[currentQuestion];
+      questionEl.textContent = q.question;
+      optionsEl.innerHTML = "";
+
+      q.options.forEach((option, i) => {
+        const li = document.createElement("li");
+
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "option";
+        radio.id = `option${i}`;
+        radio.value = option.mood;
+        radio.addEventListener("change", () => {
+          nextBtn.disabled = false;
+        });
+
+        const label = document.createElement("label");
+        label.htmlFor = `option${i}`;
+        label.textContent = option.text;
+
+        li.appendChild(radio);
+        li.appendChild(label);
+        optionsEl.appendChild(li);
+      });
+    }
+
+    nextBtn.addEventListener("click", () => {
+      const selected = document.querySelector('input[name="option"]:checked');
+      if (!selected) return;
+
+      moodScores[selected.value]++;
+      currentQuestion++;
+
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    });
+
+    function showResult() {
+      nextBtn.style.display = "none";
+
+      const emotions = {
+        Positive: [ "Happy", "Joyful", "Peaceful", "Excited", "Lovely", "Confident", "Enthusiastic" ],
+        Neutral: [
+          "Calm", "Thoughtful",  "Balanced",
+          "Neutral", "Composed", "Stable",
+          "Quiet", "Mild", "Serene"
+        ],
+        Negative: [
+          "Sad", "Anxious", "Tired", "Stressed", "Lonely",
+          "Frustrated", "Worried", "Hopeless", "Angry", "Disappointed",
+          "Overwhelmed", "Nervous", "Fearful", "Confused", "Down"
+        ]
+      };
+
+      let dominantMood = "Neutral";
+      if (moodScores.Positive > moodScores.Neutral && moodScores.Positive > moodScores.Negative) {
+        dominantMood = "Positive";
+      } else if (moodScores.Negative > moodScores.Positive && moodScores.Negative > moodScores.Neutral) {
+        dominantMood = "Negative";
+      }
+
+      const possibleEmotions = emotions[dominantMood];
+      const randomEmotion = possibleEmotions[Math.floor(Math.random() * possibleEmotions.length)];
+
+      questionEl.textContent = "";
+      optionsEl.innerHTML = `<div class="result">Your current mood seems to be:<br><strong>${randomEmotion}</strong></div>`;
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>

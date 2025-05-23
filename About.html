@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About - Spiritual Consciousness Beyond Science</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Playfair Display', serif;
+      background: radial-gradient(circle at top, #0d0d1a 0%, #000000 100%);
+      color: #f0e6ff;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column; /* Important */
+      animation: fadeInPage 1s ease forwards;
+      position: relative;
+    }
+
+    .container {
+      position: relative;
+      max-width: 900px;
+      padding: 30px;
+      text-align: center;
+      background: rgba(25, 0, 40, 0.5);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(185, 145, 255, 0.3);
+      backdrop-filter: blur(10px);
+      animation: floatIn 1.5s ease;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #d8b4ff;
+      text-shadow: 0 0 15px #a64cff;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #e2d9ff;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      color: #ffffff;
+      text-decoration: none;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      transition: all 0.4s ease;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .back-button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+      border-color: rgba(255, 255, 255, 0.8);
+    }
+
+    @keyframes fadeInPage {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes floatIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      p  { font-size: 1rem; }
+    }
+
+    /* Particles */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.6;
+      box-shadow: 0 0 8px white;
+      animation: moveParticle linear infinite;
+    }
+
+    @keyframes moveParticle {
+      0%   { transform: translate(0, 0) scale(1); opacity: 0.6; }
+      50%  { transform: translate(25px, -25px) scale(1.1); opacity: 0.8; }
+      100% { transform: translate(-25px, 25px) scale(1); opacity: 0.6; }
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 1;
+    }
+    .logo {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: white;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background: white;
+      transition: 0.3s;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    .login-nav-btn {
+      border: 2px solid white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .login-nav-btn:hover {
+      background: white;
+      color: black;
+    }
+
+    .container-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 80px); /* Adjust if navbar is taller */
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 900px;
+      padding: 30px;
+      background: rgba(25, 0, 40, 0.5);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(185, 145, 255, 0.3);
+      backdrop-filter: blur(10px);
+      animation: floatIn 1.5s ease;
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav>
+      <div class="logo">Spiritual Consciousness</div>
+      <div class="nav-links">
+        <a href="file:///C:/Users/50002/Downloads/uidproj/home.html">Home</a>
+        <a href="file:///C:/Users/50002/Downloads/uidproj/About.html">About</a>
+        <a href="file:///C:/Users/50002/Downloads/uidproj/emotion.html">Emotions</a>
+        <a href="C:\Users\50002\Downloads\uidproj\contact.html">Contact</a>
+      </div>
+      <a href="file:///C:/Users/50002/Downloads/uidproj/login.html"><button class="login-nav-btn">Login</button></a>
+    </nav>
+
+  <div class="particles" id="particles-container"></div>
+
+<div class="container-wrapper">
+  <div class="container">
+    <h1>About This Project</h1>
+    <p>
+        "Spiritual Consciousness Beyond Science" is a digital journey into the union of cosmic science and inner spirituality.
+        We invite users to go beyond the material world and explore emotional and divine awareness.
+      </p>
+      <p>
+        Built with pure HTML, CSS, and JavaScript, this immersive experience brings together visuals, music, emotion bubbles,
+        and cosmic design to represent a universe where spirituality and science coexist.
+      </p>
+      <p>
+        May this project inspire you to explore what lies within and beyond — in silence, in energy, and in light.
+      </p>
+    <a href="home.html" class="back-button">⟵ Back to Home</a>
+  </div>
+</div>
+
+
+</body>
+
+</html>

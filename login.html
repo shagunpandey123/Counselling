@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    /* Your existing styles unchanged */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('https://wallpaper.dog/large/10889197.jpg') no-repeat center/cover;
+      color: white;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+    .logo {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+    }
+    body::after {
+      content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5); z-index: -1;
+    }
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 5%;
+      background: rgba(0,0,0,0.3); backdrop-filter: blur(10px);
+      position: relative; z-index: 1;
+    }
+    .nav-links a {
+      color: white; text-decoration: none; margin: 0 1rem;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: ""; position: absolute; bottom: -4px; left: 0;
+      height: 2px; width: 0; background: white; transition: 0.3s;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .login-nav-btn {
+      border: 2px solid white; padding: 5px 15px; border-radius: 20px;
+      background: transparent; color: white; cursor: pointer;
+      transition: 0.3s;
+    }
+    .login-nav-btn:hover { background: white; color: black; }
+    .login-container {
+      display: flex; justify-content: center; align-items: center;
+      height: calc(100vh - 80px);
+      position: relative;
+      z-index: 1;
+    }
+    .login-form {
+      width: 2px;
+      height: 300px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(15px);
+      border-radius: 10px;
+      opacity: 0;
+      padding: 0;
+      transition:
+        width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 1.2s ease 0.2s,
+        padding 1s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+    .login-form > * {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .login-form.show {
+      width: 400px;
+      opacity: 1;
+      padding: 2rem;
+    }
+    .login-form.show.show-children > * {
+      opacity: 1;
+    }
+    .login-form h2 { text-align: center; margin-bottom: 1rem; }
+    .input-group {
+      position: relative; margin-bottom: 1rem;
+    }
+    .input-group i {
+      position: absolute; top: 50%; left: 12px;
+      transform: translateY(-50%); color: rgba(255,255,255,0.7);
+    }
+    .input-group input {
+      width: 100%; padding: 10px 10px 10px 35px;
+      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.1);
+      color: white; border-radius: 5px;
+    }
+    .input-group input:focus {
+      outline: none;
+      border-color: white;
+    }
+    .login-btn {
+      width: 100%; padding: 10px;
+      background: white; color: black;
+      border: none; border-radius: 5px;
+      font-weight: bold; cursor: pointer;
+      transition: 0.3s;
+    }
+    .login-btn:hover {
+      background: rgba(255,255,255,0.9);
+      transform: translateY(-2px);
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Spiritual Consciousness</div>
+    <div class="nav-links">
+      <a href="file:///C:/Users/50002/Downloads/uidproj/home.html">Home</a>
+      <a href="file:///C:/Users/50002/Downloads/uidproj/About.html">About</a>
+      <a href="file:///C:/Users/50002/Downloads/uidproj/emotion.html">Emotions</a>
+      <a href="file:///C:/Users/50002/Downloads/uidproj/contact.html">Contact</a>
+    </div>
+    <a href="file:///C:/Users/50002/Downloads/uidproj/login.html"><button class="login-nav-btn">Login</button></a>
+  </nav>
+
+  <div class="login-container">
+    <div class="login-form" id="loginBox">
+      <h2>Welcome</h2>
+      <form id="loginForm">
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" id="username" placeholder="Username" required>
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function showLoginForm() {
+      var loginBox = document.getElementById('loginBox');
+      loginBox.className += " show";
+
+      setTimeout(function() {
+        loginBox.className += " show-children";
+      }, 1300);
+    }
+
+    function scrollToLogin() {
+      document.querySelector('.login-container').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function focusEffect(input) {
+      input.previousElementSibling.style.color = 'white';
+    }
+
+    function blurEffect(input) {
+      input.previousElementSibling.style.color = 'rgba(255,255,255,0.7)';
+    }
+
+    window.onload = function() {
+      showLoginForm();
+
+      var loginBtn = document.querySelector('.login-nav-btn');
+      loginBtn.onclick = function(e) {
+        e.preventDefault();
+        scrollToLogin();
+      };
+
+      var inputs = document.querySelectorAll('input');
+      for (var i = 0; i < inputs.length; i++) {
+        inputs[i].onfocus = function() {
+          focusEffect(this);
+        };
+        inputs[i].onblur = function() {
+          blurEffect(this);
+        };
+      }
+
+      var form = document.getElementById('loginForm');
+      form.onsubmit = function(e) {
+        e.preventDefault();
+
+        var username = document.getElementById('username').value.trim();
+        var password = document.getElementById('password').value.trim();
+
+        var usernameRegex = /^[a-zA-Z0-9]+$/;
+        if (!usernameRegex.test(username)) {
+          alert("Username must contain only letters and digits (no spaces or special characters).");
+          return false;
+        }
+
+        if (password.length === 0) {
+          alert("Please enter your password.");
+          return false;
+        }
+
+        // Redirect to quiz page
+        var emotionPath = "file:///C:/Users/50002/Downloads/uidproj/emotion.html";
+        window.location.href = emotionPath;
+      };
+    };
+  </script>
+</body>
+</html>

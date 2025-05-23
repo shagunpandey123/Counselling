@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cosmic Peace - Tranquility</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    #portal {
+      position: absolute;
+      z-index: 5;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.05), rgba(0,0,0,0.95));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeInPortal 2s ease-out forwards;
+    }
+
+    #enterButton {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid #ffffff80;
+      color: #fff;
+      font-size: 2rem;
+      padding: 15px 40px;
+      border-radius: 30px;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      transition: all 0.5s ease;
+      font-family: 'Great Vibes', cursive;
+      text-shadow: 0 0 10px #fff;
+    }
+
+    #enterButton:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeInPortal {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #fff;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: url('https://wallpapershome.com/images/pages/pic_h/26274.jpg') no-repeat center center/cover;
+      background-size: cover;
+      opacity: 0.25;
+      filter: brightness(0.95) blur(1px) saturate(1.05);
+      animation: moveBackground 60s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes moveBackground {
+      0% { background-position: center center; }
+      50% { background-position: center top; }
+      100% { background-position: center center; }
+    }
+
+    .book {
+      position: relative;
+      z-index: 2;
+      height: 90%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1500px;
+    }
+
+    .page {
+      width: 45%;
+      height: 80%;
+      background: rgba(255, 255, 255, 0.08);
+      margin: 0 10px;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px #ffffff40, inset 0 0 10px #ffffff20;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    
+    .portal-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .quote {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #ffffffcc;
+      font-family: 'Poppins', sans-serif;
+      max-width: 80%;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px #9eeaff;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      text-shadow: 0 0 12px #c4f4ff;
+    }
+
+    p {
+      font-size: 1.3rem;
+      line-height: 1.7;
+      color: #f0f0f0;
+      text-shadow: 0 0 8px #444;
+    }
+
+    
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #aaa;
+      z-index: 2;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: floatParticle linear infinite;
+    }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-100vh); }
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 1;
+    }
+    .logo {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: white;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background: white;
+      transition: 0.3s;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    .login-nav-btn {
+      border: 2px solid white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .login-nav-btn:hover {
+      background: white;
+      color: black;
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display:none;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Spiritual Consciousness</div>
+    <div class="nav-links">
+      <a href="file:///C:/Users/50002/Downloads/uidproj/home.html">Home</a>
+      <a href="file:///C:/Users/50002/Downloads/uidproj/About.html">About</a>
+      <a href="file:///C:/Users/50002/Downloads/uidproj/emotion.html">Emotions</a>
+      <a href="C:\Users\50002\Downloads\uidproj\contact.html">Contact</a>
+    </div>
+    <a href="file:///C:/Users/50002/Downloads/uidproj/login.html"><button class="login-nav-btn">Login</button></a>
+  </nav>
+
+  <div id="portal">
+    <div class="portal-content">
+      <button id="enterButton">The Heart’s Refuge</button>
+      <div class="quote">“Peace is the gentle whisper of the soul resting in divine grace.”</div>
+    </div>
+  </div>
+
+  <div class="book">
+    <div class="page">
+      <h1>Peace & Stillness</h1>
+      <h2>The Nature of Peace</h2>
+      <p>Peace is not the absence of sound, but the presence of stillness. It arises from acceptance, awareness, and alignment with the now.</p>
+      <h2>Spiritual Insight</h2>
+      <p>In silence, the soul speaks. Spiritual masters often emphasize inner quietude as the gateway to divine experience — where peace is not sought, but remembered.</p>
+    </div>
+
+    <div class="page">
+      <h2>Science & Space</h2>
+      <p><strong>Neuroscience:</strong> Peaceful states activate the parasympathetic system, slowing heart rate and quieting the mind — fostering healing and clarity.</p>
+      <p><strong>Cosmos:</strong> Amidst the chaos of galaxies and stars, peace is found in the empty space between — vast, still, and eternal. That same stillness resides within.</p>
+      <h2>Why Peace Matters</h2>
+      <p>Peace empowers presence. In a distracted world, choosing peace is revolutionary. It sharpens perception, nurtures compassion, and opens the door to timeless wisdom.</p>
+    </div>
+  </div>
+
+  <script>
+    var portal = document.getElementById('portal');
+    var enterButton = document.getElementById('enterButton');
+    var book = document.querySelector('.book');
+
+    book.style.display = 'none';
+
+    enterButton.onclick = function() {
+      portal.style.opacity = '0';
+      setTimeout(function() {
+        portal.style.display = 'none';
+        book.style.display = 'flex';
+      }, 1000);
+    };
+
+    for (var i = 0; i < 100; i++) {
+      var particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.top = Math.random() * window.innerHeight + 'px';
+      particle.style.left = Math.random() * window.innerWidth + 'px';
+      particle.style.animationDuration = (10 + Math.random() * 20) + 's';
+      document.body.appendChild(particle);
+    }
+  </script>
+
+  <footer>
+    © 2025 Cosmic Peace & Tranquility
+  </footer>
+</body>
+</html>

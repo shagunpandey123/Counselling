@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Excitement & Consciousness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+body {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.logo {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  font-weight: 400;
+}
+    #portal {
+      position: absolute;
+      z-index: 5;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(255, 0, 255, 0.05), rgba(0,0,0,0.95));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeInPortal 2s ease-out forwards;
+    }
+
+    #enterButton {
+      background: rgba(255, 0, 255, 0.1);
+      border: 2px solid #ff00ff80;
+      color: #fff;
+      font-size: 2rem;
+      padding: 15px 40px;
+      border-radius: 30px;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      transition: all 0.5s ease;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 15px #0ff, 0 0 10px #f0f;
+    }
+
+    #enterButton:hover {
+      background: rgba(255, 0, 255, 0.2);
+      transform: scale(1.08);
+    }
+
+    @keyframes fadeInPortal {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #fff;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: url('https://i.pinimg.com/originals/f6/b1/f7/f6b1f7d3c7e6777262303215353f2906.png') no-repeat center center/cover;
+      opacity: 0.3;
+      filter: brightness(1.2) saturate(1.4);
+      animation: moveBackground 40s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes moveBackground {
+      0% { background-position: center center; }
+      50% { background-position: top left; }
+      100% { background-position: center center; }
+    }
+
+    .book {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+margin-top: -30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1500px;
+    }
+
+    .page {
+      width: 45%;
+      height: 80%;
+      background: rgba(255, 255, 255, 0.08);
+      margin: 0 10px;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px #ff00ff40, inset 0 0 10px #00ffff20;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    
+    .portal-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .quote {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #ffffffcc;
+      font-family: 'Poppins', sans-serif;
+      max-width: 80%;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 15px #0ff, 0 0 12px #f0f;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      margin-bottom: 15px;
+      color: #ff66ff;
+      text-shadow: 0 0 10px #0ff;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #eee;
+      text-shadow: 0 0 6px #222;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #aaa;
+      z-index: 2;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: linear-gradient(to bottom right, #0ff, #f0f);
+      border-radius: 50%;
+      opacity: 0.9;
+      animation: floatParticle linear infinite;
+    }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-100vh); }
+    }
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+}
+.logo {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  color: white;
+}
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 1rem;
+  position: relative;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: white;
+  transition: 0.3s;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+.login-nav-btn {
+  border: 2px solid white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.login-nav-btn:hover {
+  background: white;
+  color: black;
+}
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Spiritual Consciousness</div>
+    <div class="nav-links">
+      <a href="file:///C:/Users/50002/Downloads/uidproj/home.html">Home</a>
+      <a href="file:///C:/Users/50002/Downloads/uidproj/About.html">About</a>
+      <a href="file:///C:/Users/50002/Downloads/uidproj/emotion.html">Emotions</a>
+      <a href="C:\Users\50002\Downloads\uidproj\contact.html">Contact</a>
+    </div>
+    <a href="file:///C:/Users/50002/Downloads/uidproj/login.html"><button class="login-nav-btn">Login</button></a>
+  </nav>
+
+  <div id="portal">
+    <div class="portal-content">
+      <button id="enterButton">Feel the Thrill</button>
+      <div class="quote">"Excitement is contagious—spread it wherever you go."</div>
+    </div>
+  </div>
+
+  <div class="book">
+    <div class="page">
+      <h1>Excitement & Consciousness</h1>
+      <h2>What is Excitement?</h2>
+      <p>Excitement is energy in motion — a spark that surges through the mind and body. It awakens curiosity, ignites passion, and propels us toward exploration and creation.</p>
+      <h2>Spiritual View</h2>
+      <p>In the spiritual dimension, excitement is a signal from the soul. It marks alignment with our purpose. When we follow what excites us deeply, we walk the path of authenticity and growth.</p>
+    </div>
+
+    <div class="page">
+      <h2>Science & Vibration</h2>
+      <p><strong>Neuroscience:</strong> Excitement activates the brain’s reward systems. Dopamine flows, heart rate rises, focus sharpens — it’s the body's natural accelerator.</p>
+      <p><strong>Quantum View:</strong> At the quantum level, all matter vibrates. Excitement is high-frequency resonance — the cosmos dancing through us when we’re in tune with our passion.</p>
+      <h2>Living with Excitement</h2>
+      <p>When embraced consciously, excitement becomes a compass. It tells us where life wants to flow through us. To follow it is to live vibrantly, fully, now.</p>
+    </div>
+  </div>
+
+  <script>
+    var portal = document.getElementById('portal');
+    var enterButton = document.getElementById('enterButton');
+    var book = document.querySelector('.book');
+
+    book.style.display = 'none';
+
+    enterButton.onclick = function() {
+      portal.style.opacity = '0';
+      setTimeout(function() {
+        portal.style.display = 'none';
+        book.style.display = 'flex';
+      }, 1000);
+    };
+
+    for (var i = 0; i < 100; i++) {
+      var particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.top = Math.random() * window.innerHeight + 'px';
+      particle.style.left = Math.random() * window.innerWidth + 'px';
+      particle.style.animationDuration = (10 + Math.random() * 20) + 's';
+      document.body.appendChild(particle);
+    }
+  </script>
+
+  <footer>
+    © 2025 Cosmic Excitement & Consciousness
+  </footer>
+</body>
+</html>

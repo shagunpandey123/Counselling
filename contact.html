@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact - Spiritual Contentures</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --accent: #f5b642;
+      --text: #e8e8e8;
+      --secondary: #b46cd6;
+      --glow: 0 0 8px #f5b64280;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: var(--accent);
+      text-shadow: 0 0 15px var(--accent), 0 0 30px #f5b64240;
+    }
+
+    p {
+      text-align: center;
+      max-width: 600px;
+      margin: 1rem auto;
+      color: #ccc;
+    }
+
+    .team-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      padding: 2rem;
+    }
+
+    .card {
+      background: #1c1c1c;
+      padding: 1.5rem 1rem;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid #333;
+      box-shadow: 0 0 20px rgba(255,255,255,0.03);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 25px var(--accent);
+    }
+
+    .image-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .image-wrapper::before {
+      content: '';
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #f5b64233, transparent 70%);
+      z-index: 0;
+      filter: blur(12px);
+    }
+
+    .card img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 15px rgba(245, 182, 66, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px var(--accent), 0 0 40px #f5b64266;
+    }
+
+    .card h3 {
+      color: var(--accent);
+      margin: 0.5rem 0;
+    }
+
+    .card a {
+      color: var(--secondary);
+      word-break: break-word;
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 3rem auto;
+      background: #1c1c1c;
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid #333;
+      box-shadow: 0 0 20px rgba(255,255,255,0.05);
+    }
+
+    form h2 {
+      margin-bottom: 1rem;
+    }
+
+    input, textarea, select, button {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border-radius: 6px;
+      border: 1px solid #444;
+      background: #222;
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    button {
+      background: var(--secondary);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #9c52bd;
+      box-shadow: 0 0 15px var(--secondary);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background: white;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .login-nav-btn {
+      border: 2px solid white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+      white-space: nowrap;
+      display: inline-block;
+      width: auto;
+    }
+
+    .login-nav-btn:hover {
+      background: white;
+      color: black;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Spiritual Consciousness</div>
+    <div class="nav-links">
+      <a href="file:///C:/Users/50002/Downloads/uidproj/home.html">Home</a>
+      <a href="file:///C:/Users/50002/Downloads/uidproj/About.html">About</a>
+      <a href="file:///C:/Users/50002/Downloads/uidproj/emotion.html">Emotions</a>
+      <a href="C:\Users\50002\Downloads\uidproj\contact.html">Contact</a>
+    </div>
+    <a href="file:///C:/Users/50002/Downloads/uidproj/login.html"><button class="login-nav-btn">Login</button></a>
+  </nav>
+
+  <h1>Contact Our Spiritual Guides</h1>
+  <p>Connect with our team for spiritual support and guidance.</p>
+
+  <h2>Meet Our Guides</h2>
+  <div class="team-grid">
+    <div class="card">
+      <div class="image-wrapper">
+        <img src="pics/Shagun.jpg" alt="Shagun Kumari">
+      </div>
+      <h3>Shagun Kumari</h3>
+      <a href="mailto:bl.sc.u4aie24249@bl.students.amrita.edu">bl.sc.u4aie24249@bl.students.amrita.edu</a>
+    </div>
+    <div class="card">
+      <div class="image-wrapper">
+        <img src="pics/Hari.jpg" alt="K Hari Priya">
+      </div>
+      <h3>K. Hari Priya</h3>
+      <a href="mailto:bl.sc.u4aie24225@bl.students.amrita.edu">bl.sc.u4aie24225@bl.students.amrita.edu</a>
+    </div>
+    <div class="card">
+      <div class="image-wrapper">
+        <img src="pics/Ayushi.jpeg" alt="Ayushi Bansal">
+      </div>
+      <h3>Ayushi Bansal</h3>
+      <a href="mailto:bl.sc.u4aie24207@bl.students.amrita.edu">bl.sc.u4aie24207@bl.students.amrita.edu</a>
+    </div>
+  </div>
+
+  <form>
+    <h2>Send a Message</h2>
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <select required>
+      <option value="">Select a guide</option>
+      <option>Shagun Kumari</option>
+      <option>Hari Priya</option>
+      <option>Ayushi Bansal</option>
+    </select>
+    <textarea rows="5" placeholder="Your Spiritual Inquiry..." required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</body>
+</html>

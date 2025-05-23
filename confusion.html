@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Confusion - Through the Mist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <style>
+    #portal {
+      position: absolute;
+      z-index: 5;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(20,20,40,0.95), rgba(5,5,10,0.98));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeInPortal 2s ease-out forwards;
+    }
+
+    #enterButton {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid #ffffff50;
+      color: #fff;
+      font-size: 2rem;
+      padding: 15px 40px;
+      border-radius: 30px;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      transition: all 0.5s ease;
+      font-family: 'Great Vibes', cursive;
+      text-shadow: 0 0 10px #fff;
+    }
+
+    #enterButton:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeInPortal {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: #0a0a0f;
+      color: #fff;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: url('https://c4.wallpaperflare.com/wallpaper/250/512/887/mist-fog-path-forest-path-wallpaper-preview.jpg') no-repeat center center/cover;
+      opacity: 0.15;
+      filter: blur(2px) brightness(0.7) contrast(1.2);
+      animation: floatFog 60s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes floatFog {
+      0% { background-position: center top; }
+      100% { background-position: center bottom; }
+    }
+
+    .book {
+      position: relative;
+      z-index: 2;
+      height: 90%;
+margin-top: -30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1500px;
+    }
+
+    .page {
+      width: 45%;
+      height: 80%;
+      background: rgba(255, 255, 255, 0.07);
+      margin: 0 10px;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px #ffffff15, inset 0 0 10px #ffffff10;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    
+    .portal-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .quote {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #ffffffcc;
+      font-family: 'Poppins', sans-serif;
+      max-width: 80%;
+    }
+
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 15px #99f;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px #aac;
+    }
+
+    p {
+      font-size: 1.3rem;
+      line-height: 1.7;
+      color: #eee;
+      text-shadow: 0 0 8px #222;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #aaa;
+      z-index: 2;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: drift linear infinite;
+    }
+
+    @keyframes drift {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-100vh); }
+    }
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+}
+.logo {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  color: white;
+}
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 1rem;
+  position: relative;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: white;
+  transition: 0.3s;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+.login-nav-btn {
+  border: 2px solid white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.login-nav-btn:hover {
+  background: white;
+  color: black;
+}
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Spiritual Consciousness</div>
+    <div class="nav-links">
+      <a href="file:///C:/Users/50002/Downloads/uidproj/home.html">Home</a>
+      <a href="file:///C:/Users/50002/Downloads/uidproj/About.html">About</a>
+      <a href="file:///C:/Users/50002/Downloads/uidproj/emotion.html">Emotions</a>
+      <a href="C:\Users\50002\Downloads\uidproj\contact.html">Contact</a>
+    </div>
+    <a href="file:///C:/Users/50002/Downloads/uidproj/login.html"><button class="login-nav-btn">Login</button></a>
+  </nav>
+
+  <div id="portal">
+    <div class="portal-content">
+      <button id="enterButton">Step Into the Fog</button>
+      <div class="quote">“Sometimes, confusion is the first step toward understanding.”</div>
+    </div>
+  </div>
+
+  <div class="book">
+    <div class="page">
+      <h1>Confusion</h1>
+      <h2>What is Confusion?</h2>
+      <p>Confusion is a fog of thought, where clarity is momentarily lost. It unsettles the mind, yet invites exploration.</p>
+      <h2>Spiritual Insight</h2>
+      <p>Spiritually, confusion is not failure. It is the in-between—the sacred pause before transformation. In confusion, the soul asks us to slow down and listen.</p>
+    </div>
+
+    <div class="page">
+      <h2>Scientific View</h2>
+      <p><strong>Neuroscience:</strong> Confusion activates regions of the brain responsible for decision-making and attention. It signals a gap in understanding and can lead to deeper learning.</p>
+      <h2>Clarity Emerges</h2>
+      <p>Rather than fight confusion, embracing it as a guide fosters creativity, curiosity, and eventual insight. Confusion is often the first step toward wisdom.</p>
+    </div>
+  </div>
+
+  <script>
+    var portal = document.getElementById('portal');
+    var enterButton = document.getElementById('enterButton');
+    var book = document.querySelector('.book');
+
+    book.style.display = 'none';
+
+    enterButton.onclick = function() {
+      portal.style.opacity = '0';
+      setTimeout(function() {
+        portal.style.display = 'none';
+        book.style.display = 'flex';
+      }, 1000);
+    };
+
+    for (var i = 0; i < 100; i++) {
+      var particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.top = Math.random() * window.innerHeight + 'px';
+      particle.style.left = Math.random() * window.innerWidth + 'px';
+      particle.style.animationDuration = (10 + Math.random() * 20) + 's';
+      document.body.appendChild(particle);
+    }
+  </script>
+
+  <footer>
+    © 2025 Inner Reflection Project
+  </footer>
+</body>
+</html>
